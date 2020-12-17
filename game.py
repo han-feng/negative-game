@@ -34,11 +34,6 @@ def display_cards():
 
 
 def get_player_content(player):
-    # values = []
-    # for card in player["cards"]:
-    #     values.append(str(card["value"]))
-    # s = ",".join(values)
-    # return f"[b]{player['name']}  [green]{player['pass']}\n[red]{s}"
     values = []
     previous = 0
     result = player["pass"]
@@ -85,8 +80,6 @@ def draw_card():
     l = len(desktop_cards)
     i = random.randint(0, l-1)
     current_card = desktop_cards[i]
-    v = current_card["value"]
-    # current_card_no = convert(v)
     desktop_cards.remove(current_card)  # 从桌面移除该负数牌
     """显示抽中的牌"""
     console.print("玩家 [yellow]%s[/yellow] 正在抽牌……" % current_player["name"], Panel.fit(
@@ -99,7 +92,6 @@ def next_player():
     i = current_player_no + 1
     current_player_no = i % player_count
     current_player = players[current_player_no]
-    # console.print("当前玩家为 [yellow]%s[/yellow]" % current_player["name"])
 
 
 def on_accepted():
@@ -188,9 +180,8 @@ current_player_no = 0
 current_player = players[current_player_no]
 
 """
-current_card_no: 当前抽到的负数牌序号，该序号等于这张牌在 cards 集合中的下标（设计约定该序号应等于该 card value 值的绝对值减 3）
+current_card: 当前抽到的负数牌
 """
-# current_card_no = -1
 current_card = None
 
 
@@ -228,4 +219,5 @@ while(len(desktop_cards) > 30):
 console.clear()
 display_cards()
 display_players()
+
 """游戏结束"""
