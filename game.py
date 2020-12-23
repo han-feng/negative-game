@@ -206,11 +206,13 @@ current_card = None
 开始游戏
 """
 while(len(desktop_cards) > 0):
+
     console.clear()
     display_readme()
     display_cards()
     display_players()
     display_desktop()
+
     """抽卡片"""
     draw_card()
     accepted = False
@@ -224,6 +226,7 @@ while(len(desktop_cards) > 0):
             accepted = True
             console.print("玩家 [yellow]%s[/yellow] 自动接受这张卡片" %
                           current_player["name"])
+            console.input("[yellow][i]输入任意字符继续……")
 
         if accepted:
             on_accepted()
